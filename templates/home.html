@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block k %}
+	
+	<div class="jumbotron text-center">
+		<h1>Welcome to HOME</h1>
+		<p class="text-muted">Only about page does not contain lorem ipsum</p>
+		<hr>
+		<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores iure nesciunt quasi, quia. Qui necessitatibus hic reiciendis rerum consequuntur itaque molestias maxime sint blanditiis sunt, culpa eius, eaque, a quidem veritatis.</p>
+		{% if session.logged_in == NULL %}
+			<a href="/register" class="btn btn-primary btn-lg">Register</a>
+			<a href="/login" class="btn btn-success btn-lg">Login</a>
+		{% endif %}
+	</div>
+
+{% endblock %}

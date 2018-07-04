@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block k %}
+
+	<h3>Articles</h3>
+	<div class="list-group">
+		{% for x in articles %}
+			<a class="list-group-item list-group-item-action flex-column align-items-start" href="article/{{x.id}}">
+				<div class="d-flex w-100 justify-content-between" style="align-items: center;">
+			      <h5 class="mt-2">{{x.title}}</h5>
+			      <small>Written by {{x.author}}</small>
+			    </div>
+			</a>
+		{% endfor %}
+	</div>
+			
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block k %}
+	<h1>Dashboard <small class="text-weight-thin">Welcome {{session.username}}</small></h1>
+	<a class="btn btn-success" href="/add_article">Add Article</a>
+	<hr>
+	<style>td{vertical-align: middle !important;}</style>
+
+	{% if naf %}
+	{% else %}
+	<table class="table table-striped">
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Date</th>
+		<th></th>
+	</tr>
+	{% for a in articles %}
+	<tr>
+		<td>{{a.id}}</td>
+		<td>{{a.title}}</td>
+		<td>{{a.author}}</td>
+		<td>{{a.create_date}}</td>
+		<td class="text-right">
+			<a href="/edit_article/{{a.id}}" class="btn btn-info">Edit</a>
+			<form style="display: inline-block;" action="{{url_for('delete_article',id=a.id)}}" class="ml-2" method="POST">
+				<input type="hidden" name="_method" value="DELETE">
+				<input type="submit" value="Delete" class="btn btn-danger">
+			</form>
+		</td>
+	</tr>
+	{% endfor %}
+	</table>
+	{% endif %}
+	<style>
+		.del-btn{
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			padding: 5px 3px;
+		}
+	</style>
+	<form action="{{url_for('delete_me',username=session.username)}}" method="POST">
+		<input type="submit" class="del-btn" value="DELETE YOUR ACCOUNT">
+	</form>
+
+
+{% endblock %}
+

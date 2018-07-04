@@ -1,0 +1,9 @@
+{% macro disFeild(f) %}
+	{{ f.label }}
+	{{ f(**kwargs)|safe }}
+	{% if f.errors %}
+		{% for e in f.errors %}
+			<span class="help-inline">{{ e }}</span>
+		{% endfor %}
+	{% endif %}
+{% endmacro %}
